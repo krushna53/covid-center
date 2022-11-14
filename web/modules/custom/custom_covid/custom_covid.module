@@ -1,0 +1,54 @@
+<?php
+
+use Drupal\views\ViewExecutable;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ *  Implements hook_views_pre_build()
+ */
+function custom_covid_views_pre_build(ViewExecutable $view) {
+  if (($view->id() == 'centers_in_your_city' && $view->getDisplay()->display['id'] == 'page_1') 
+     || ($view->id() == 'other_cities' && $view->getDisplay()->display['id'] == 'block_1' && \Drupal::service('path.matcher')->isFrontPage())) {
+    $view->args = [_custom_covid_get_city()];
+  }
+}
+
+/**
+ * Helper function to get current user's city.
+ */
+function _custom_covid_get_city() {
+  $current_user_id = \Drupal::currentUser()->id();
+  $account = \Drupal::entityTypeManager()->getStorage('user')->load($current_user_id);
+  return ($account->field_city->target_id) ?? '';
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_insert
+ */
+
+function custom_covid_flagging_insert(EntityInterface $flagging) {
+  if ($flagging->get('entity_type')->value == 'node' && $flagging->get('flag_id')->target_id == 'bookmark') {
+    _custom_covid_alter_available_slots($flagging, 'insert');
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete
+ */
+function custom_covid_flagging_delete(EntityInterface $flagging) {
+    if ($flagging->get('entity_type')->value == 'node' && $flagging->get('flag_id')->target_id == 'bookmark') {
+      _custom_covid_alter_available_slots($flagging, 'delete');
+    }
+}
+
+function _custom_covid_alter_available_slots($entity, $op) {
+  $covid_center_nid = $entity->get('entity_id')->value;
+  $covid_center_node = \Drupal::entityTypeManager()->getStorage('node')->load($covid_center_nid);
+  if ($op == 'insert') {
+    $covid_center_node->field_available_slots->value -= 1;
+  }
+  else {
+    $covid_center_node->field_available_slots->value += 1;
+  }
+  $covid_center_node->save();
+}

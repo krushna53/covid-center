@@ -1,0 +1,43 @@
+uuid: 10023cf8-4a5f-45ed-b1fc-da7a17a995f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.covid_centers.body
+    - field.field.node.covid_centers.field_available_slots
+    - field.field.node.covid_centers.field_city
+    - field.field.node.covid_centers.field_image
+    - node.type.covid_centers
+  module:
+    - text
+    - user
+id: node.covid_centers.teaser
+targetEntityType: node
+bundle: covid_centers
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 200
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_city:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_available_slots: true
+  field_image: true

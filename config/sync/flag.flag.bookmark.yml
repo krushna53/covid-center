@@ -1,0 +1,40 @@
+uuid: 5e9bcc51-97e3-4b96-8256-db527387acb7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+  enforced:
+    module:
+      - flag_bookmark
+_core:
+  default_config_hash: vuzrLaRZ3xV-FmT127t2gLy_p8JDLMWtsKsnCwdWR2Y
+id: bookmark
+label: Register
+bundles:
+  - covid_centers
+entity_type: node
+global: false
+flag_short: Register
+flag_long: 'Do you want to register at this center ?'
+flag_message: 'Registered !'
+unflag_short: Unregister
+unflag_long: 'Unregister at this center'
+unflag_message: 'You have unregistered at this center'
+unflag_denied_text: ''
+weight: 0
+flag_type: 'entity:node'
+link_type: confirm
+flagTypeConfig:
+  show_in_links: {  }
+  show_as_field: true
+  show_on_form: false
+  show_contextual_link: false
+  extra_permissions:
+    owner: owner
+linkTypeConfig:
+  flag_confirmation: Confirm
+  unflag_confirmation: Unregister
+  flag_create_button: Register
+  flag_delete_button: Cancel
+  form_behavior: dialog

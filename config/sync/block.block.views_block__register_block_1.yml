@@ -1,0 +1,33 @@
+uuid: 9a0a5684-7bba-44b4-8852-53885020061b
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.register
+  module:
+    - node
+    - views
+  theme:
+    - olivero
+id: views_block__register_block_1
+theme: olivero
+region: sidebar
+weight: -8
+provider: null
+plugin: 'views_block:register-block_1'
+settings:
+  id: 'views_block:register-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      covid_centers: covid_centers

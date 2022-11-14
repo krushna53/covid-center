@@ -1,0 +1,15 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: 41beeb6d-145c-44e2-ac82-591a5cb6104d
+name: 'Covid Vaccination Centers'
+mail: admin@example.com
+slogan: ''
+page:
+  403: /user/register
+  404: ''
+  front: /home
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en
+mail_notification: ''

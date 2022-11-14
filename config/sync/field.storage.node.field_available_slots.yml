@@ -1,0 +1,20 @@
+uuid: f40d1a08-d45c-44e0-827c-07cd9ac02a9f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_available_slots
+field_name: field_available_slots
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

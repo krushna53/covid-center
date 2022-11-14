@@ -1,0 +1,36 @@
+uuid: 3a4219d3-6e2d-4f85-93e8-14d129a4ea17
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - comment
+    - contact
+    - filter
+    - flag
+    - search
+    - shortcut
+    - system
+_core:
+  default_config_hash: I44QAB4es39lNzMQWiJLq2dfjX7VRSOzT_5KzAcUq_M
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access comments'
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'flag bookmark'
+  - 'flag bookmark own items'
+  - 'flag register_center'
+  - 'post comments'
+  - 'search content'
+  - 'skip comment approval'
+  - 'unflag bookmark'
+  - 'unflag bookmark own items'
+  - 'unflag register_center'
+  - 'unflag register_center own items'
+  - 'use text format basic_html'
